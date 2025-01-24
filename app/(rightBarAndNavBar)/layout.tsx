@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
@@ -9,13 +10,23 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "../../components/ui/themeToggle";
+import { SearchForm } from "../../components/search-form";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: "Forque App",
+  description: "Your application description here",
+};
+
+export default function Layout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -25,29 +36,21 @@ export default function Page() {
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">
-                  Building Your Application
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Current Page</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="ml-auto">
+          <SearchForm className="ml-auto w-[300px]" />
+          <div>
             <ModeToggle />
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
+        <main className="flex-1">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );
