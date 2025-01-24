@@ -2,7 +2,7 @@ import * as React from "react";
 import { Sidebar, SidebarFooter, SidebarRail } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
 import SidebarMenuContent from "./sidebar-menu";
-import { auth } from "@/auth";
+import { auth, signOut } from "@/auth";
 
 interface CustomSession {
   name: string;
@@ -20,13 +20,21 @@ export async function AppSidebar({
     avatar: authSession?.user?.image ?? "/avatar.png",
   };
 
+  async function handleSignOut() {
+    "use server";
+    await signOut({
+      redirect: true,
+      redirectTo: "/sign-in",
+    });
+  }
+
   return (
     <Sidebar {...props}>
       <SidebarMenuContent />
       <SidebarRail />
       <div className="mt-auto">
         <SidebarFooter>
-          <NavUser user={session} />
+          <NavUser user={session} onSignOut={handleSignOut} />
         </SidebarFooter>
       </div>
     </Sidebar>
