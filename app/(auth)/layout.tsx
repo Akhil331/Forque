@@ -29,6 +29,10 @@ export default function Layout({
         callbackUrl: "/home",
         redirect: false,
       });
+      toast({
+        title: "Success.",
+        description: "You have signed-in successfully.",
+      });
     } catch (error) {
       console.error("Error signing in", error);
       toast({

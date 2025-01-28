@@ -43,6 +43,10 @@ export function NavUser({ user, onSignOut }: NavUserProps) {
   const handleSignOut = () => {
     try {
       onSignOut();
+      toast({
+        title: "Success.",
+        description: "You have signed-out successfully.",
+      });
     } catch (error) {
       toast({
         variant: "destructive",

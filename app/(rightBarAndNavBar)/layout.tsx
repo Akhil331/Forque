@@ -45,7 +45,11 @@ export default function Layout({
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <SearchForm className="ml-auto w-[300px]" />
+          <SearchForm
+            type="global-search"
+            placeholder="Search..."
+            className="ml-auto w-[300px]"
+          />
           <div>
             <ModeToggle />
           </div>
