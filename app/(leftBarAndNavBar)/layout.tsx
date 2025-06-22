@@ -31,7 +31,7 @@ export default function Layout({
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 sticky top-0 bg-background z-10">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
@@ -48,13 +48,13 @@ export default function Layout({
           <SearchForm
             type="global-search"
             placeholder="Search..."
-            className="ml-auto w-[300px]"
+            className="ml-auto  w-[300px]"
           />
           <div>
             <ModeToggle />
           </div>
         </header>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 overflow-auto ">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );

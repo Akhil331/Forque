@@ -43,7 +43,7 @@ export function SearchForm({ type, placeholder, ...props }: SearchFormProps) {
 
   return (
     <form {...props}>
-      <SidebarGroup className="py-0">
+      <SidebarGroup className="py-0 ">
         <SidebarGroupContent className="relative">
           <Label htmlFor="search" className="sr-only">
             Search

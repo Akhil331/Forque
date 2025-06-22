@@ -63,7 +63,7 @@ const SidebarMenuContent = ({
           defaultVersion={data.versions[0]}
         />
       </SidebarHeader>
-      <SidebarContent className="mt-0 px-2">
+      <SidebarContent className="mt-0 px-4 py-4">
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
